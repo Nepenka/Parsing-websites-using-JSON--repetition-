@@ -1,0 +1,6 @@
+framework module Pods_Parsing_websites_using_JSON__repetition_ {
+  umbrella header "Pods-Parsing websites using JSON (repetition)-umbrella.h"
+
+  export *
+  module * { export * }
+}
