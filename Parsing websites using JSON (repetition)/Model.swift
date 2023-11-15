@@ -19,10 +19,13 @@ struct BitcoinTime: Codable {
 
 struct BitcoinPriceIndex: Codable {
     let USD: BitcoinRate
+    let GBP: BitcoinRate
+    let EUR: BitcoinRate
   
 }
 
 struct BitcoinRate: Codable {
     let rate: String
+    
 }
 

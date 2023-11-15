@@ -47,18 +47,33 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bitPrice != nil ? 1 : 0
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
         cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
         
-        if let rate = bitPrice?.bpi.USD.rate {
-            cell.textLabel?.text = "Bitcoin Rate: \(rate)"
-        } else {
-            cell.textLabel?.text = "No data available"
+        
+        switch indexPath.row {
+        case 0 :
+            if let usdRate = bitPrice?.bpi.USD.rate {
+                cell.textLabel?.text = "Bitcoin Rate in USD: \(usdRate)"
+            }
+        case 1:
+            if let eurRate = bitPrice?.bpi.EUR.rate {
+                cell.textLabel?.text = "Bitcoin Rate in EUR: \(eurRate)"
+            }
+        case 2:
+            if let gbpRate = bitPrice?.bpi.GBP.rate {
+                cell.textLabel?.text = "Bitcoin Rate in GBP: \(gbpRate)"
+            }
+        default:
+            cell.textLabel?.text = "No data availeble"
+            
         }
+        
+        
         
         return cell
     }
